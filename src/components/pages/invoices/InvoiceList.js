@@ -21,6 +21,10 @@ var InvoiceList = (props) => {
     );
   });
 
+  if (props.invoices.size === 0) {
+    summaries = (<p>There are no invoices to display.</p>);
+  }
+
   return (
     <div className="InvoiceList">
       {summaries}
