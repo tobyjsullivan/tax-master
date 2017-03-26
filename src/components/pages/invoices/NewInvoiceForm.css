@@ -1,0 +1,7 @@
+.NewInvoiceForm {
+  margin: 10px;
+}
+
+.NewInvoiceForm-validationError {
+  border: 1px solid #f00;
+}
