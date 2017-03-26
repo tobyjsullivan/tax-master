@@ -1,0 +1,7 @@
+.TextInput {
+
+}
+
+.TextInput-validationError {
+  border: 1px solid #f00;
+}

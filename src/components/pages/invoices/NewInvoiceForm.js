@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { addInvoice } from '../../../actions/creators';
+import TextInput from '../forms/TextInput';
 import './NewInvoiceForm.css';
 
 const mapDispatchToProps = (dispatch) => {
@@ -85,53 +86,29 @@ class NewInvoiceForm extends Component {
     this.setState({ returnToInvoicesPage: true })
   }
 
-  formatValidationErrors(errors) {
-    if (errors.length === 0) {
-      return '';
-    }
-
-    var listItems = errors.map(e => {
-      return (<li>{e}</li>);
-    });
-    return (
-      <ul>
-        {listItems}
-      </ul>
-    );
-  }
-
   render() {
     if (this.state.returnToInvoicesPage) {
       return (<Redirect to={`/invoices`} />);
     }
 
-    var clientNameClassName = '';
-    var clientNameValidationErrors = this.formatValidationErrors(this.state.validationErrors.clientName);
-    if (this.state.validationErrors.clientName.length > 0) {
-      clientNameClassName += ' NewInvoiceForm-validationError';
-    }
-
-    var issueDateClassName = '';
-    var issueDateValidationErrors = this.formatValidationErrors(this.state.validationErrors.issueDate);
-    if (this.state.validationErrors.issueDate.length > 0) {
-      issueDateClassName += 'NewInvoiceForm-validationError'
-    }
-
-    var amountClassName = '';
-    var amountValidationErrors = this.formatValidationErrors(this.state.validationErrors.amount);
-    if (this.state.validationErrors.amount.length > 0) {
-      amountClassName += 'NewInvoiceForm-validationError'
-    }
-
     return (
       <div className="NewInvoiceForm">
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          {clientNameValidationErrors}
-          <p><input className={clientNameClassName} type="text" onChange={(e) => this.handleClientNameChange(e)} placeholder="Client Name" /></p>
-          {issueDateValidationErrors}
-          <p><input className={issueDateClassName} type="text" onChange={(e) => this.handleIssueDateChange(e)} placeholder="Issue Date" /></p>
-          {amountValidationErrors}
-          <p>$<input className={amountClassName} type="text" onChange={(e) => this.handleAmountChange(e)} placeholder="Amount" /></p>
+          <TextInput
+            placeholder="Client Name"
+            errors={this.state.validationErrors.clientName}
+            value={this.state.clientNameValue}
+            onChange={(e) => this.handleClientNameChange(e)} />
+          <TextInput
+            placeholder="Issue Date"
+            errors={this.state.validationErrors.issueDate}
+            value={this.state.issueDateValue}
+            onChange={(e) => this.handleIssueDateChange(e)} />
+          <TextInput
+            placeholder="Amount"
+            errors={this.state.validationErrors.amount}
+            value={this.state.amountValue}
+            onChange={(e) => this.handleAmountChange(e)} />
           <p><input type="submit" value="Add Invoice" /></p>
         </form>
       </div>

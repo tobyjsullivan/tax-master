@@ -22,8 +22,6 @@ function addInvoice(state, payload) {
     amount: payload.amount,
   });
 
-  console.log("Updating invoices", invoices);
-
   return state.set('invoices', invoices);
 }
 
