@@ -5,7 +5,7 @@ import './InvoiceList.css';
 
 const mapStateToProps = (state) => {
   return {
-    invoices: state.get('invoices'),
+    invoices: state.invoices,
   };
 };
 
