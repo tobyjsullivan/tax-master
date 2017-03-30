@@ -5,7 +5,8 @@ import './InvoiceList.css';
 
 const mapStateToProps = (state) => {
   return {
-    invoices: state.invoices,
+    invoices: state.invoices.items,
+    isFetching: state.invoices.isFetching
   };
 };
 
@@ -21,7 +22,9 @@ var InvoiceList = (props) => {
     );
   });
 
-  if (props.invoices.size === 0) {
+  if (props.isFetching) {
+    summaries = (<p>Loading...</p>);
+  } else if (props.invoices.size === 0) {
     summaries = (<p>There are no invoices to display.</p>);
   }
 

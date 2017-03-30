@@ -1,18 +1,44 @@
 import { combineReducers } from 'redux'
 import { List } from 'immutable';
-import { ADD_INVOICE } from './actions/types';
+import { REQUEST_INVOICES, RECEIVE_INVOICES, ADD_INVOICE } from './actions/types';
 
-function invoices(state = List([]), action) {
+function invoices(state = {
+    isFetching: false,
+    items: List([])
+  }, action) {
   switch (action.type) {
+    case REQUEST_INVOICES:
+      return Object.assign({}, state, {
+        isFetching: true,
+      });
+    case RECEIVE_INVOICES:
+      var invoices = action.payload.map(child => {
+        return {
+          id: child.id,
+          client: {
+            id: child.client.id,
+            name: child.client.name
+          },
+          issueDate: child.issueDate,
+          amount: child.amount.value / 100
+        };
+      });
+      var items = List(invoices);
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: items
+      });
     case ADD_INVOICE:
-      state = state.push({
+      var items = state.items.push({
         client: {
           name: action.payload.clientName
         },
         issueDate: action.payload.issueDate,
         amount: action.payload.amount
       });
-      return state;
+      return Object.assign({}, state, {
+        items: items,
+      });
     default:
       return state;
   }
