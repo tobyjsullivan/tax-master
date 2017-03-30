@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { addInvoice } from '../../../actions/creators';
+import { saveInvoice } from '../../../actions/async';
 import TextInput from '../forms/TextInput';
 import './NewInvoiceForm.css';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddInvoice: (invoice) => {dispatch(addInvoice(invoice))}
+    onAddInvoice: (invoice) => {dispatch(saveInvoice(invoice))}
   }
 }
 

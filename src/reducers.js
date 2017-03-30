@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { List } from 'immutable';
-import { REQUEST_INVOICES, RECEIVE_INVOICES, ADD_INVOICE } from './actions/types';
+import { REQUEST_INVOICES, RECEIVE_INVOICES } from './actions/types';
 
 function invoices(state = {
     isFetching: false,
@@ -27,17 +27,6 @@ function invoices(state = {
       return Object.assign({}, state, {
         isFetching: false,
         items: items
-      });
-    case ADD_INVOICE:
-      var items = state.items.push({
-        client: {
-          name: action.payload.clientName
-        },
-        issueDate: action.payload.issueDate,
-        amount: action.payload.amount
-      });
-      return Object.assign({}, state, {
-        items: items,
       });
     default:
       return state;

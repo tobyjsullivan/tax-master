@@ -1,4 +1,4 @@
-import { REQUEST_INVOICES, RECEIVE_INVOICES, ADD_INVOICE } from './types';
+import { REQUEST_INVOICES, RECEIVE_INVOICES } from './types';
 
 export const requestInvoices = () => {
   return {
@@ -12,10 +12,3 @@ export const receiveInvoices = (json) => {
     payload: json.payload
   }
 }
-
-export const addInvoice = (invoice) => {
-  return {
-    type: ADD_INVOICE,
-    payload: invoice,
-  }
-};

@@ -12,3 +12,31 @@ export function fetchInvoices() {
       });
   }
 }
+
+export function saveInvoice(invoice) {
+  return function(dispatch) {
+    var content = JSON.stringify({
+      client: {
+        name: invoice.clientName,
+      },
+      issueDate: invoice.issueDate,
+      amount: {
+        currency: "CAD",
+        value: invoice.amount * 100
+      }
+    });
+
+    var fetchOpts = {
+      method: 'POST',
+      body: content,
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }
+
+    return fetch(`http://localhost:8080/invoices`, fetchOpts)
+      .then(response => {
+        dispatch(fetchInvoices());
+      });
+  }
+}
