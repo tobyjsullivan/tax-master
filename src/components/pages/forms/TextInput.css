@@ -1,7 +1,18 @@
 .TextInput {
-
+  padding: 5px;
+  background-color: #fff;
+  margin: 5px 0px 5px 0px;
+  border: 1px solid #c5c5c5;
 }
 
 .TextInput-validationError {
   border: 1px solid #f00;
+}
+
+.TextInput input {
+  border: none;
+  height: 15px;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
 }

@@ -5,7 +5,7 @@ import PageHeader from './PageHeader';
 function NewInvoicePage(props) {
   return (
     <div>
-      <PageHeader title="Add Invoice" actions={[]} />
+      <PageHeader title="Add Invoice" actions={[]} backRoute={`/invoices`} />
       <NewInvoiceForm />
     </div>
   )

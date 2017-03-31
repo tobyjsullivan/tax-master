@@ -5,12 +5,24 @@
   text-align: center;
   display: flex;
   justify-content: space-between;
+  font-size: 20px;
+}
+
+.PageHeader a,
+.PageHeader a:link,
+.PageHeader a:visited,
+.PageHeader a:focus,
+.PageHeader a:hover,
+.PageHeader a:active {
+  text-decoration: none;
+  color: #fff;
 }
 
 .PageHeader-title {
   margin: 0px;
-  font-size: 20px;
   font-weight: normal;
+  text-align: center;
+  font-size: inherit;
 }
 
 .PageHeader-actionMenu {

@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ActionButton.css';
 
 function ActionButton(props) {
   return (
-    <a className="ActionButton" onClick={props.onClick}>{props.icon}</a>
+    <Link to={props.path}>
+      {props.children}
+    </Link>
   );
 }
 

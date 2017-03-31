@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { saveInvoice } from '../../../actions/async';
+import SubmitButton from '../forms/SubmitButton';
 import TextInput from '../forms/TextInput';
 import './NewInvoiceForm.css';
 
@@ -109,7 +110,7 @@ class NewInvoiceForm extends Component {
             errors={this.state.validationErrors.amount}
             value={this.state.amountValue}
             onChange={(e) => this.handleAmountChange(e)} />
-          <p><input type="submit" value="Add Invoice" /></p>
+          <SubmitButton text="Add Invoice" />
         </form>
       </div>
     );

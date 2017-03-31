@@ -30,9 +30,9 @@ function TextInput(props) {
   }
 
   return (
-    <div>
+    <div className="TextInput">
       {formatValidationErrors(errors)}
-      <p><input className={className} type="text" value={props.value} placeholder={props.placeholder} onChange={props.onChange} /></p>
+      <input className={className} type="text" value={props.value} placeholder={props.placeholder} onChange={props.onChange} />
     </div>
   )
 }
